@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { TopBar } from "@/components/TopBar";
 import { ListSection } from "@/components/ListSection";
+import { GroupTabs } from "@/components/GroupTabs";
 import { db } from "@/lib/db";
 import { getGenericSection } from "@/data/sections";
 
@@ -22,16 +23,19 @@ export default async function SectionPage({ params }: { params: { slug: string }
     itemsByGroup.set(item.group, list);
   }
 
+  const counts = section.groups.map((group) => itemsByGroup.get(group)?.length ?? 0);
+  const panels = section.groups.map((group) => (
+    <ListSection key={group} section={section.slug} group={group} items={itemsByGroup.get(group) ?? []} />
+  ));
+
   return (
     <>
       <TopBar title={section.title} />
       <div className="p-6">
-        <p className="mb-6 max-w-2xl text-sm text-black/60 dark:text-white/60">{section.summary}</p>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {section.groups.map((group) => (
-            <ListSection key={group} section={section.slug} group={group} items={itemsByGroup.get(group) ?? []} />
-          ))}
-        </div>
+        <p className="mb-6 max-w-2xl text-sm text-rose-950/60 dark:text-rose-50/60">{section.summary}</p>
+        <GroupTabs groups={section.groups} counts={counts}>
+          {panels}
+        </GroupTabs>
       </div>
     </>
   );

@@ -3,18 +3,31 @@
 @tailwind utilities;
 
 :root {
-  --background: #f7f5f2;
-  --foreground: #1c1a17;
+  --background: #fff5f8;
+  --foreground: #3f1728;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #14120f;
-    --foreground: #f2efe9;
-  }
+:root.dark {
+  --background: #1a0f14;
+  --foreground: #fbe8ee;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@media print {
+  aside,
+  header,
+  form,
+  button,
+  select,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
 }

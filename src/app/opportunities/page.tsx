@@ -47,12 +47,12 @@ export default async function OpportunitiesPage() {
               name="title"
               placeholder="Title"
               required
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
             <select
               name="type"
               required
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             >
               {TYPES.map((t) => (
                 <option key={t} value={t}>
@@ -64,27 +64,27 @@ export default async function OpportunitiesPage() {
               type="date"
               name="deadline"
               placeholder="Deadline"
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
             <input
               type="text"
               name="contactPerson"
               placeholder="Contact person"
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
             <input
               type="text"
               name="requiredMaterials"
               placeholder="Required materials"
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
             <input
               type="date"
               name="followUpDate"
               placeholder="Follow-up date"
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
-            <button className="rounded-md bg-black/80 px-3 py-1 text-sm text-white dark:bg-white/80 dark:text-black md:col-span-2">
+            <button className="rounded-md bg-pink-600 px-3 py-1 text-sm text-white hover:bg-pink-700 dark:bg-pink-500 dark:text-rose-950 dark:hover:bg-pink-400 md:col-span-2">
               Add
             </button>
           </form>
@@ -94,7 +94,7 @@ export default async function OpportunitiesPage() {
           {opportunities.map((o) => (
             <Card key={o.id} title={o.title}>
               <div className="mb-2 flex items-center justify-between">
-                <span className="rounded-full bg-black/5 px-2 py-0.5 text-xs dark:bg-white/10">{o.type}</span>
+                <span className="rounded-full bg-rose-950/5 px-2 py-0.5 text-xs dark:bg-rose-50/10">{o.type}</span>
                 <DeleteButton
                   label={o.title}
                   onDelete={async () => {
@@ -116,32 +116,32 @@ export default async function OpportunitiesPage() {
               <dl className="space-y-1 text-sm">
                 {o.deadline && (
                   <div>
-                    <dt className="text-xs text-black/50 dark:text-white/50">Deadline</dt>
+                    <dt className="text-xs text-rose-950/50 dark:text-rose-50/50">Deadline</dt>
                     <dd>{o.deadline.toLocaleDateString()}</dd>
                   </div>
                 )}
                 {o.contactPerson && (
                   <div>
-                    <dt className="text-xs text-black/50 dark:text-white/50">Contact person</dt>
+                    <dt className="text-xs text-rose-950/50 dark:text-rose-50/50">Contact person</dt>
                     <dd>{o.contactPerson}</dd>
                   </div>
                 )}
                 {o.requiredMaterials && (
                   <div>
-                    <dt className="text-xs text-black/50 dark:text-white/50">Required materials</dt>
+                    <dt className="text-xs text-rose-950/50 dark:text-rose-50/50">Required materials</dt>
                     <dd>{o.requiredMaterials}</dd>
                   </div>
                 )}
                 {o.followUpDate && (
                   <div>
-                    <dt className="text-xs text-black/50 dark:text-white/50">Follow-up date</dt>
+                    <dt className="text-xs text-rose-950/50 dark:text-rose-50/50">Follow-up date</dt>
                     <dd>{o.followUpDate.toLocaleDateString()}</dd>
                   </div>
                 )}
               </dl>
             </Card>
           ))}
-          {opportunities.length === 0 && <p className="text-black/40 dark:text-white/40">No opportunities tracked yet.</p>}
+          {opportunities.length === 0 && <p className="text-rose-950/40 dark:text-rose-50/40">No opportunities tracked yet.</p>}
         </div>
       </div>
     </>

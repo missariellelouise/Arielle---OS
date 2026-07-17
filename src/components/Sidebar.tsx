@@ -62,10 +62,10 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r border-black/10 bg-white/60 px-4 py-6 dark:border-white/10 dark:bg-white/5 md:block">
+    <aside className="hidden w-64 shrink-0 border-r border-rose-950/10 bg-rose-50/60 px-4 py-6 dark:border-rose-50/10 dark:bg-rose-50/5 md:block">
       <div className="mb-6 px-2">
         <p className="text-lg font-semibold tracking-tight">Arielle OS</p>
-        <p className="text-xs text-black/50 dark:text-white/50">Personal command center</p>
+        <p className="text-xs text-rose-950/50 dark:text-rose-50/50">Personal command center</p>
       </div>
       <nav className="flex flex-col gap-1">
         {navItems.map((item) => {
@@ -77,8 +77,8 @@ export function Sidebar() {
               href={item.href}
               className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                 isActive
-                  ? "bg-black/10 font-medium text-foreground dark:bg-white/15"
-                  : "text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10"
+                  ? "bg-pink-500/15 font-medium text-pink-700 dark:bg-pink-400/20 dark:text-pink-200"
+                  : "text-rose-950/70 hover:bg-pink-500/5 dark:text-rose-50/70 dark:hover:bg-pink-400/10"
               }`}
             >
               <Icon size={16} strokeWidth={2} />

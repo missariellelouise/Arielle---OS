@@ -43,7 +43,7 @@ export default async function HomePage() {
               <li key={d.id} className="flex items-center justify-between">
                 <span>{d.label}</span>
                 <div className="flex items-center gap-3">
-                  <span className="text-black/50 dark:text-white/50">
+                  <span className="text-rose-950/50 dark:text-rose-50/50">
                     {d.date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}
                   </span>
                   <DeleteButton
@@ -56,7 +56,7 @@ export default async function HomePage() {
                 </div>
               </li>
             ))}
-            {deadlines.length === 0 && <li className="text-black/40 dark:text-white/40">No deadlines yet.</li>}
+            {deadlines.length === 0 && <li className="text-rose-950/40 dark:text-rose-50/40">No deadlines yet.</li>}
           </ul>
           <form action={createDeadline} className="flex gap-2">
             <input
@@ -64,15 +64,15 @@ export default async function HomePage() {
               name="label"
               placeholder="Deadline"
               required
-              className="flex-1 rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="flex-1 rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
             <input
               type="date"
               name="date"
               required
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
-            <button className="rounded-md bg-black/80 px-3 py-1 text-sm text-white dark:bg-white/80 dark:text-black">
+            <button className="rounded-md bg-pink-600 px-3 py-1 text-sm text-white hover:bg-pink-700 dark:bg-pink-500 dark:text-rose-950 dark:hover:bg-pink-400">
               Add
             </button>
           </form>
@@ -83,14 +83,14 @@ export default async function HomePage() {
             {todaysMeetings.map((m) => (
               <li key={m.id} className="flex items-center justify-between">
                 <span>{m.title}</span>
-                <span className="text-black/50 dark:text-white/50">
+                <span className="text-rose-950/50 dark:text-rose-50/50">
                   {m.date.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })}
                 </span>
               </li>
             ))}
-            {todaysMeetings.length === 0 && <li className="text-black/40 dark:text-white/40">Nothing scheduled today.</li>}
+            {todaysMeetings.length === 0 && <li className="text-rose-950/40 dark:text-rose-50/40">Nothing scheduled today.</li>}
           </ul>
-          <Link href="/meetings" className="mt-2 inline-block text-xs text-black/50 underline dark:text-white/50">
+          <Link href="/meetings" className="mt-2 inline-block text-xs text-rose-950/50 underline dark:text-rose-50/50">
             Manage in Meetings Database →
           </Link>
         </Card>
@@ -101,13 +101,13 @@ export default async function HomePage() {
           <ul className="space-y-2 text-sm">
             {recentIdeas.map((i) => (
               <li key={i.id} className="flex gap-2">
-                <span className="text-black/30 dark:text-white/30">•</span>
+                <span className="text-rose-950/30 dark:text-rose-50/30">•</span>
                 {i.title}
               </li>
             ))}
-            {recentIdeas.length === 0 && <li className="text-black/40 dark:text-white/40">Nothing captured yet.</li>}
+            {recentIdeas.length === 0 && <li className="text-rose-950/40 dark:text-rose-50/40">Nothing captured yet.</li>}
           </ul>
-          <Link href="/dump" className="mt-2 inline-block text-xs text-black/50 underline dark:text-white/50">
+          <Link href="/dump" className="mt-2 inline-block text-xs text-rose-950/50 underline dark:text-rose-50/50">
             Open Dumppp →
           </Link>
         </Card>
@@ -117,12 +117,12 @@ export default async function HomePage() {
             {upcomingEvents.map((e) => (
               <li key={e.id} className="flex items-center justify-between">
                 <span>{e.label}</span>
-                <span className="text-black/50 dark:text-white/50">
+                <span className="text-rose-950/50 dark:text-rose-50/50">
                   {e.date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}
                 </span>
               </li>
             ))}
-            {upcomingEvents.length === 0 && <li className="text-black/40 dark:text-white/40">No upcoming events.</li>}
+            {upcomingEvents.length === 0 && <li className="text-rose-950/40 dark:text-rose-50/40">No upcoming events.</li>}
           </ul>
           <form action={createEvent} className="flex gap-2">
             <input
@@ -130,15 +130,15 @@ export default async function HomePage() {
               name="label"
               placeholder="Event"
               required
-              className="flex-1 rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="flex-1 rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
             <input
               type="date"
               name="date"
               required
-              className="rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
-            <button className="rounded-md bg-black/80 px-3 py-1 text-sm text-white dark:bg-white/80 dark:text-black">
+            <button className="rounded-md bg-pink-600 px-3 py-1 text-sm text-white hover:bg-pink-700 dark:bg-pink-500 dark:text-rose-950 dark:hover:bg-pink-400">
               Add
             </button>
           </form>
@@ -146,7 +146,7 @@ export default async function HomePage() {
 
         <Card title="Money Earned This Month">
           <p className="text-2xl font-semibold">${moneyEarned.toLocaleString()}</p>
-          <Link href="/finance" className="mt-2 inline-block text-xs text-black/50 underline dark:text-white/50">
+          <Link href="/finance" className="mt-2 inline-block text-xs text-rose-950/50 underline dark:text-rose-50/50">
             View Finance →
           </Link>
         </Card>
@@ -160,9 +160,9 @@ export default async function HomePage() {
               name="value"
               placeholder="Update count"
               defaultValue={followersMetric?.value ?? 0}
-              className="w-28 rounded-md border border-black/10 bg-white/80 px-2 py-1 text-sm dark:border-white/10 dark:bg-black/20"
+              className="w-28 rounded-md border border-rose-950/10 bg-rose-50/80 px-2 py-1 text-sm dark:border-rose-50/10 dark:bg-rose-950/20"
             />
-            <button className="rounded-md bg-black/80 px-3 py-1 text-sm text-white dark:bg-white/80 dark:text-black">
+            <button className="rounded-md bg-pink-600 px-3 py-1 text-sm text-white hover:bg-pink-700 dark:bg-pink-500 dark:text-rose-950 dark:hover:bg-pink-400">
               Save
             </button>
           </form>
@@ -175,7 +175,7 @@ export default async function HomePage() {
               <li key={p.id}>{p.title}</li>
             ))}
           </ul>
-          <Link href="/project-hub" className="mt-2 inline-block text-xs text-black/50 underline dark:text-white/50">
+          <Link href="/project-hub" className="mt-2 inline-block text-xs text-rose-950/50 underline dark:text-rose-50/50">
             View Project Hub →
           </Link>
         </Card>

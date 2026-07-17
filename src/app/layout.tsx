@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sidebar } from "@/components/Sidebar";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,12 +10,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <main className="flex-1">{children}</main>
-        </div>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex min-h-screen">
+            <Sidebar />
+            <main className="flex-1">{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

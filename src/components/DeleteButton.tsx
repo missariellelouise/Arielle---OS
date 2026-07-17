@@ -17,7 +17,7 @@ export function DeleteButton({ onDelete, label }: { onDelete: () => Promise<void
           onDelete();
         });
       }}
-      className="text-black/30 hover:text-red-500 dark:text-white/30"
+      className="text-rose-950/30 hover:text-red-500 dark:text-rose-50/30"
     >
       <Trash2 size={14} />
     </button>
