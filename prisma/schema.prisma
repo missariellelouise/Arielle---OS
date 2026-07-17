@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Generic checklist item used by most list-style sections:
+// tasks (goal hierarchy), dump, content-studio, knowledge-hub,
+// school-hub, assets, weekly-review, archives, brand idea backlogs,
+// and ai-agent report logs.
+model ListItem {
+  id        String    @id @default(cuid())
+  section   String
+  group     String
+  title     String
+  notes     String?
+  status    String?
+  done      Boolean   @default(false)
+  dueDate   DateTime?
+  order     Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([section, group])
+}
+
+model Contact {
+  id                 String    @id @default(cuid())
+  name               String
+  category           String
+  whereMet           String?
+  lastConversation   String?
+  followUpDate       DateTime?
+  interests          String?
+  collaborationIdeas String?
+  notes              String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@index([category])
+}
+
+model Transaction {
+  id        String    @id @default(cuid())
+  type      String // income | expense | subscription
+  label     String
+  amount    Float
+  client    String?
+  date      DateTime  @default(now())
+  dueDate   DateTime?
+  recurring Boolean   @default(false)
+  createdAt DateTime  @default(now())
+
+  @@index([type, date])
+}
+
+model ProjectCard {
+  id        String   @id @default(cuid())
+  title     String
+  category  String // Personal, Miami Fashion Institute, Fashion Alliance Network
+  status    String   @default("todo") // todo | in-progress | done | at-risk
+  notes     String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+}
+
+model Opportunity {
+  id                String    @id @default(cuid())
+  title             String
+  type              String
+  status            String    @default("researching") // researching | applied | interview | accepted | declined
+  deadline          DateTime?
+  contactPerson     String?
+  requiredMaterials String?
+  followUpDate      DateTime?
+  outcome           String?
+  notes             String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Brand {
+  id             String  @id @default(cuid())
+  slug           String  @unique
+  name           String
+  mission        String?
+  vision         String?
+  voice          String?
+  targetAudience String?
+  goals          String?
+  guidelines     String?
+  colorPalette   String?
+  fonts          String?
+  competitors    String?
+}
+
+model Meeting {
+  id           String    @id @default(cuid())
+  title        String
+  date         DateTime
+  summary      String?
+  notes        String?
+  decisions    String?
+  actionItems  String?
+  followUpDate DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+model Event {
+  id    String   @id @default(cuid())
+  label String
+  date  DateTime
+}
+
+model Deadline {
+  id    String   @id @default(cuid())
+  label String
+  date  DateTime
+}
+
+model Metric {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     Float
+  updatedAt DateTime @updatedAt
+}

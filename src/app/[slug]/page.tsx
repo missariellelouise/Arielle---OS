@@ -1,15 +1,26 @@
 import { notFound } from "next/navigation";
 import { TopBar } from "@/components/TopBar";
-import { Card } from "@/components/Card";
-import { sections, getSection } from "@/data/sections";
+import { ListSection } from "@/components/ListSection";
+import { db } from "@/lib/db";
+import { getGenericSection } from "@/data/sections";
 
-export function generateStaticParams() {
-  return sections.map((s) => ({ slug: s.slug }));
-}
+export const dynamic = "force-dynamic";
 
-export default function SectionPage({ params }: { params: { slug: string } }) {
-  const section = getSection(params.slug);
+export default async function SectionPage({ params }: { params: { slug: string } }) {
+  const section = getGenericSection(params.slug);
   if (!section) notFound();
+
+  const items = await db.listItem.findMany({
+    where: { section: section.slug },
+    orderBy: [{ order: "asc" }, { createdAt: "asc" }],
+  });
+
+  const itemsByGroup = new Map<string, typeof items>();
+  for (const item of items) {
+    const list = itemsByGroup.get(item.group) ?? [];
+    list.push(item);
+    itemsByGroup.set(item.group, list);
+  }
 
   return (
     <>
@@ -17,17 +28,8 @@ export default function SectionPage({ params }: { params: { slug: string } }) {
       <div className="p-6">
         <p className="mb-6 max-w-2xl text-sm text-black/60 dark:text-white/60">{section.summary}</p>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {section.groups.map((group, idx) => (
-            <Card key={group.label ?? idx} title={group.label ?? section.title}>
-              <ul className="space-y-2 text-sm">
-                {group.items.map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span className="text-black/30 dark:text-white/30">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+          {section.groups.map((group) => (
+            <ListSection key={group} section={section.slug} group={group} items={itemsByGroup.get(group) ?? []} />
           ))}
         </div>
       </div>

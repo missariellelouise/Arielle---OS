@@ -22,7 +22,7 @@ import {
   Archive,
   type LucideIcon,
 } from "lucide-react";
-import { sections } from "@/data/sections";
+import { navSections } from "@/data/sections";
 
 type NavItem = {
   href: string;
@@ -51,7 +51,7 @@ const iconBySlug: Record<string, LucideIcon> = {
 
 const navItems: NavItem[] = [
   { href: "/", label: "Home", icon: Home },
-  ...sections.map((s) => ({
+  ...navSections.map((s) => ({
     href: `/${s.slug}`,
     label: s.navLabel,
     icon: iconBySlug[s.slug] ?? Home,
