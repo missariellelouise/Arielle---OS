@@ -1,6 +1,11 @@
 {
   "name": "Arielle OS",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
   "postCreateCommand": "npm install",
   "postAttachCommand": {
     "server": "npm run dev"
